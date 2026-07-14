@@ -156,3 +156,121 @@ drawingScreen.classList.add("hidden");
 gameScreen.classList.remove("hidden");
 
 }
+
+const items=document.querySelectorAll(".item");
+
+const bubble=document.getElementById("petBubble");
+
+let drag=null;
+
+let dragName="";
+
+items.forEach(item=>{
+
+    item.addEventListener("pointerdown",e=>{
+
+        drag=document.createElement("div");
+
+        drag.className="dragItem";
+
+        drag.textContent=item.textContent;
+
+        dragName=item.dataset.item;
+
+        document.body.appendChild(drag);
+
+        moveDrag(e);
+
+    });
+
+});
+
+window.addEventListener("pointermove",e=>{
+
+    if(!drag)return;
+
+    moveDrag(e);
+
+});
+
+window.addEventListener("pointerup",e=>{
+
+    if(!drag)return;
+
+    const pet=document
+    .getElementById("petArea")
+    .getBoundingClientRect();
+
+    if(
+
+        e.clientX>pet.left &&
+        e.clientX<pet.right &&
+        e.clientY>pet.top &&
+        e.clientY<pet.bottom
+
+    ){
+
+        useItem(dragName);
+
+    }
+
+    drag.remove();
+
+    drag=null;
+
+});
+
+function moveDrag(e){
+
+    drag.style.left=e.clientX-20+"px";
+
+    drag.style.top=e.clientY-20+"px";
+
+}
+
+function useItem(type){
+
+    switch(type){
+
+        case "apple":
+
+            showBubble("냠냠!");
+
+            break;
+
+        case "water":
+
+            showBubble("꿀꺽!");
+
+            break;
+
+        case "toy":
+
+            showBubble("신난다!");
+
+            break;
+
+        case "sleep":
+
+            showBubble("쿨...");
+            break;
+
+    }
+
+}
+
+function showBubble(text){
+
+    bubble.textContent=text;
+
+    bubble.style.opacity=1;
+
+    clearTimeout(window.bubbleTimer);
+
+    window.bubbleTimer=setTimeout(()=>{
+
+        bubble.style.opacity=0;
+
+    },1500);
+
+}
