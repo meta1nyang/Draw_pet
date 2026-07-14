@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Draw Pet</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+
+<header>
+<h1>🎨 Draw Pet</h1>
+</header>
+
+<!-- 그림 그리기 -->
+<section id="drawingScreen">
+
+<h2>새 친구 만들기</h2>
+
+<p id="mission">
+😊 행복한 표정을 그려주세요.
+</p>
+
+<canvas id="drawCanvas" width="320" height="320"></canvas>
+
+<div class="tools">
+
+<button id="penBtn">✏️</button>
+
+<button id="eraserBtn">🩹</button>
+
+<input
+type="color"
+id="colorPicker"
+value="#000000">
+
+<input
+type="range"
+id="sizeSlider"
+min="2"
+max="30"
+value="5">
+
+</div>
+
+<button id="finishBtn">
+완료
+</button>
+
+</section>
+
+<!-- 게임 화면 -->
+<section id="gameScreen" class="hidden">
+
+<div id="petArea">
+
+<img
+id="petImage"
+src=""
+alt="pet">
+
+</div>
+
+<div id="stats">
+
+<div>😊 행복 <span id="happyValue">100</span></div>
+
+<div>🍗 배고픔 <span id="hungerValue">100</span></div>
+
+<div>💧 목마름 <span id="thirstValue">100</span></div>
+
+<div>⚡ 에너지 <span id="energyValue">100</span></div>
+
+</div>
+
+<div id="items">
+
+<button class="item">🍎</button>
+
+<button class="item">💧</button>
+
+<button class="item">🧸</button>
+
+<button class="item">🛏️</button>
+
+</div>
+
+</section>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
